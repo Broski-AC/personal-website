@@ -2,12 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import Header from './Header'
+import Header from './Header';
+import Profile from './Profile';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
     <Header />
+    <Profile />
   </React.StrictMode>,
   document.getElementById('root')
 );
