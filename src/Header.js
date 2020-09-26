@@ -1,42 +1,46 @@
 import React from 'react';
-import { Grid, AppBar, Toolbar, IconButton, Menu, MenuItem } from '@material-ui/core';
+import { Grid, AppBar, Toolbar, Drawer, IconButton, List, ListItem, ListItemText} from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 
 export default function Header() {
-    const [anchorEl, setAnchorEl] = React.useState(null);
 
-    const handleClick = (event) => {
-        setAnchorEl(event.currentTarget);
+    const [state, setState] = React.useState({
+        left: false
+    });
+
+    const toggleDrawer = (anchor, open) => (event) => {
+        if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')){
+            return;
+        }
+
+        setState({ ...state, [anchor]: open });
     };
 
-    const handleClose = () => {
-        setAnchorEl(null);
-    };
+    // Need onCLick event for buttons to go to specific subsections of the page
 
-    const movePage = () => {
-        // Go to new page
-        console.log('Going to new page')
-    }    
     return (
         <Grid>
             <AppBar>
                 <Toolbar>
-                    <IconButton edge="start">
-                        <MenuIcon onClick={handleClick}/>
-                        <Menu
-                            id="simple-menu"
-                            anchorEl={anchorEl}
-                            keepMounted
-                            open={Boolean(anchorEl)}
-                            onClose={handleClose}
-                        >
-                            <MenuItem onClick={movePage}>Profile</MenuItem>
-                            <MenuItem onClick={movePage}>Public Works</MenuItem>
-                            <MenuItem onClick={movePage}>Technical Experience</MenuItem>
-                            <MenuItem onClick={movePage}>Contact</MenuItem>
-                        </Menu>
+                    <IconButton onClick={toggleDrawer('left', true)}>
+                        <MenuIcon />
                     </IconButton>
-                    <h1>Allison Broski</h1>
+                    <Drawer anchor='left' open={state['left']} onClose={toggleDrawer('left', false)}>
+                        <List>
+                            <ListItem button>
+                                <ListItemText primary='Profile'/>
+                            </ListItem>
+                            <ListItem button>
+                                <ListItemText primary='Public Works'/>
+                            </ListItem>
+                            <ListItem button>
+                                <ListItemText primary='Technical Experience'/>
+                            </ListItem>
+                            <ListItem button>
+                                <ListItemText primary='Contact'/>
+                            </ListItem>
+                        </List>
+                    </Drawer>
                 </Toolbar>
             </AppBar>
         </Grid>
