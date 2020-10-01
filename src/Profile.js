@@ -1,20 +1,33 @@
 import React from 'react';
 import {Grid, Typography} from '@material-ui/core';
 import {createMuiTheme, responsiveFontSizes, ThemeProvider} from '@material-ui/core/styles';
-// import prof_image from './allison_image.jpg';
 import './css/profile.css';
 
 let theme = createMuiTheme();
+
 theme = responsiveFontSizes(theme);
+
+theme.typography.h1 = {
+    fontSize: '5.35rem',
+    '@media (min-width: 600px)':{
+        fontSize: '3.0rem'
+    },
+    '@media (max-width: 600px)':{
+        fontSize: '2.2rem'
+    },
+    [theme.breakpoints.up('md')]:{
+        fontSize: '5.35rem'
+    }
+}
 
 export default function Profile () {
 
     return (
         <div>
             <ThemeProvider theme={theme}>
-                <Grid container direction="row" spacing={1}>
+                <Grid container direction="row">
                     <Grid item className="profile">
-                        <Grid container className="text_content" direction="column">
+                        <Grid container className="text_content" direction="column" justify="center" alignItems="center">
                             <Grid item>
                                 <Typography variant="h1">
                                     Allison Broski
@@ -41,8 +54,7 @@ export default function Profile () {
                     <Grid item className="profile">
                         <div className="container">
                             <div className="image"/>
-                            <div className="overlay">
-                                {/* Text needs to be optimized for mobile */}
+                            <div className="overlay">''
                                 <div className="text">
                                     <ul> Did you know...
                                         <li> I love corgis </li>
@@ -54,7 +66,7 @@ export default function Profile () {
                         </div>
                     </Grid>
                 </Grid>
-                <Grid container>
+                <Grid container className="description">
                     <Grid item>
                         <Typography variant="subtitle1">
                             Allison never anticipated studying computer science. Yet here she is in her fourth year at Oakland Univeristy, learning the inner workings of computers and code. 

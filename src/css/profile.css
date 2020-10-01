@@ -7,6 +7,8 @@
 
 .text_content {
     height: 25em;
+    margin-left: 1rem;
+    margin-top: 1rem;
     width: 50%;
     overflow: hidden;
 }
@@ -53,5 +55,9 @@
     left: 50%;
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
+}
+
+.description {
+    padding: 1rem;
 }
 

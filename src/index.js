@@ -6,10 +6,11 @@ import Header from './Header';
 import Profile from './Profile';
 import * as serviceWorker from './serviceWorker';
 
+
 ReactDOM.render(
   <React.StrictMode>
-    <Header />
-    <Profile />
+      <Header />
+      <Profile />
   </React.StrictMode>,
   document.getElementById('root')
 );
